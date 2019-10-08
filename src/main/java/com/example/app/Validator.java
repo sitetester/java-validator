@@ -3,23 +3,23 @@ package com.example.app;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Validator {
+class Validator {
 
-    public boolean isBoolean(String str) {
+    boolean isBoolean(String str) {
         return Boolean.parseBoolean(str);
     }
 
-    public boolean isBooleanTrue(String str) {
+    boolean isBooleanTrue(String str) {
         boolean b = Boolean.parseBoolean(str);
         return b == true;
     }
 
-    public boolean isBooleanFalse(String str) {
+    boolean isBooleanFalse(String str) {
         boolean b = Boolean.parseBoolean(str);
         return b == false;
     }
 
-    public boolean isInt(String str) {
+    boolean isInt(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -28,39 +28,39 @@ public class Validator {
         }
     }
 
-    public boolean isEmpty(String str) {
+    boolean isEmpty(String str) {
         return str.trim().length() == 0;
     }
 
-    public boolean isLowercase(String str) {
+    boolean isLowercase(String str) {
         return str.toLowerCase() == str;
     }
 
-    public boolean isUppercase(String str) {
-        return str.toUpperCase() == str;
+    boolean isUppercase(String str) {
+        return str.toUpperCase().equals(str);
     }
 
-    public boolean hasSpecialChar(String str) {
+    boolean hasSpecialChar(String str) {
         Pattern p = Pattern.compile("[^a-zA-Z0-9]");
         Matcher m = p.matcher(str);
         return m.find();
     }
 
-    public boolean isEmail(String str) {
+    boolean isEmail(String str) {
         Pattern p = Pattern.compile("^[a-zA-Z0-9._]+@[a-zA-Z]+\\.[a-zA-Z]{3}$");
         Matcher m = p.matcher(str);
         return m.find();
     }
 
-    public boolean isInIntRange(int someNumber, int min, int max) {
+    boolean isInIntRange(int someNumber, int min, int max) {
         return someNumber >= min && someNumber <= max;
     }
 
-    public boolean isAlpha(String str) {
+    boolean isAlpha(String str) {
         return str.matches("^[a-zA-Z]+$");
     }
 
-    public boolean isAlphaNum(String str) {
+    boolean isAlphaNum(String str) {
         Pattern strP = Pattern.compile("[a-zA-Z]");
         Matcher strM = strP.matcher(str);
         boolean strFound = strM.find();
