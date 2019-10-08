@@ -10,13 +10,11 @@ class Validator {
     }
 
     boolean isBooleanTrue(String str) {
-        boolean b = Boolean.parseBoolean(str);
-        return b == true;
+        return Boolean.parseBoolean(str);
     }
 
     boolean isBooleanFalse(String str) {
-        boolean b = Boolean.parseBoolean(str);
-        return b == false;
+        return !Boolean.parseBoolean(str);
     }
 
     boolean isInt(String str) {
@@ -33,7 +31,7 @@ class Validator {
     }
 
     boolean isLowercase(String str) {
-        return str.toLowerCase() == str;
+        return str.toLowerCase().equals(str);
     }
 
     boolean isUppercase(String str) {
@@ -79,6 +77,16 @@ class Validator {
 
     boolean hasLength(String str, int length) {
         return str.length() == length;
+    }
+
+    // The .equals() method will check if the two strings have the same value
+    boolean equalTo(String str1, String str2) {
+        return str1.equals(str2);
+    }
+
+    // The == operator checks to see if the two strings are exactly the same object
+    boolean strictlyEqualTo(String str1, String str2) {
+        return str1 == str2;
     }
 
     /*
@@ -141,14 +149,6 @@ class Validator {
     }
 
     public boolean isUuid() {
-
-    }
-
-    public boolean equalTo() {
-
-    }
-
-    public boolean strictlyEqualTo() {
 
     }
 

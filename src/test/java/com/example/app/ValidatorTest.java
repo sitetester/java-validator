@@ -261,4 +261,20 @@ public class ValidatorTest {
                 new Validator().hasLength("abc", 2)
         );
     }
+
+    @Test
+    public void equalTo() {
+        assertTrue(
+                new Validator().equalTo("abc", "abc")
+        );
+    }
+
+    @Test
+    public void strictlyEqualTo() {
+        String s1 = "abc";
+        String s2 = s1;
+        assertTrue(
+                new Validator().strictlyEqualTo(s1, s2)
+        );
+    }
 }
