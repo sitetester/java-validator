@@ -72,6 +72,9 @@ public class Validator {
         return strFound && intFound;
     }
 
+    public boolean isDigit(String str) {
+        return str.matches("\\d+");
+    }
 
     /*
     public boolean isUnicode(String str) {
@@ -88,9 +91,7 @@ public class Validator {
 
     }
 
-    public boolean isDigit() {
 
-    }
 
     // ctype_graph ?
     public boolean isGraph() {

@@ -226,4 +226,27 @@ public class ValidatorTest {
                 new Validator().isAlphaNum("123")
         );
     }
+
+    @Test
+    public void isDigit() {
+        assertFalse(
+                new Validator().isDigit("abc")
+        );
+
+        assertTrue(
+                new Validator().isDigit("123")
+        );
+
+        assertFalse(
+                new Validator().isDigit("123_456")
+        );
+
+        assertFalse(
+                new Validator().isDigit(".")
+        );
+
+        assertTrue(
+                new Validator().isDigit("0")
+        );
+    }
 }
