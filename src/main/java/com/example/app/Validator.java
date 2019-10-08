@@ -43,13 +43,17 @@ public class Validator {
     public boolean hasSpecialChar(String str) {
         Pattern p = Pattern.compile("[^a-zA-Z0-9]");
         Matcher m = p.matcher(str);
-        return  m.find();
+        return m.find();
     }
 
     public boolean isEmail(String str) {
         Pattern p = Pattern.compile("^[a-zA-Z0-9._]+@[a-zA-Z]+\\.[a-zA-Z]{3}$");
         Matcher m = p.matcher(str);
         return m.find();
+    }
+
+    public boolean isInIntRange(int someNumber, int min, int max) {
+        return someNumber >= min && someNumber <= max;
     }
 
     /*

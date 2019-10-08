@@ -181,4 +181,19 @@ public class ValidatorTest {
                 new Validator().isEmail("first=last@yahoo.com")
         );
     }
+
+    @Test
+    public void isInIntRange() {
+        assertTrue(
+                new Validator().isInIntRange(5, 1, 10)
+        );
+
+        assertFalse(
+                new Validator().isInIntRange(500, 1, 10)
+        );
+
+        assertFalse(
+                new Validator().isInIntRange(-2, 1, 10)
+        );
+    }
 }
