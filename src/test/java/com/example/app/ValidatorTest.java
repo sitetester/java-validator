@@ -2,7 +2,8 @@ package com.example.app;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ValidatorTest {
 
@@ -247,6 +248,17 @@ public class ValidatorTest {
 
         assertTrue(
                 new Validator().isDigit("0")
+        );
+    }
+
+    @Test
+    public void hasLength() {
+        assertTrue(
+                new Validator().hasLength("abc", 3)
+        );
+
+        assertFalse(
+                new Validator().hasLength("abc", 2)
         );
     }
 }

@@ -72,8 +72,13 @@ public class Validator {
         return strFound && intFound;
     }
 
-    public boolean isDigit(String str) {
+    boolean isDigit(String str) {
         return str.matches("\\d+");
+    }
+
+
+    boolean hasLength(String str, int length) {
+        return str.length() == length;
     }
 
     /*
