@@ -211,4 +211,19 @@ public class ValidatorTest {
                 new Validator().isAlpha("123")
         );
     }
+
+    @Test
+    public void isAlphaNum() {
+        assertFalse(
+                new Validator().isAlphaNum("abc")
+        );
+
+        assertTrue(
+                new Validator().isAlphaNum("abc123")
+        );
+
+        assertFalse(
+                new Validator().isAlphaNum("123")
+        );
+    }
 }

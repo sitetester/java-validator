@@ -57,8 +57,21 @@ public class Validator {
     }
 
     public boolean isAlpha(String str) {
-        return str.matches("[a-zA-Z]+");
+        return str.matches("^[a-zA-Z]+$");
     }
+
+    public boolean isAlphaNum(String str) {
+        Pattern strP = Pattern.compile("[a-zA-Z]");
+        Matcher strM = strP.matcher(str);
+        boolean strFound = strM.find();
+
+        Pattern intP = Pattern.compile("[0-9]");
+        Matcher intM = intP.matcher(str);
+        boolean intFound = intM.find();
+
+        return strFound && intFound;
+    }
+
 
     /*
     public boolean isUnicode(String str) {
@@ -69,9 +82,7 @@ public class Validator {
 
     }
 
-    public boolean isAlphaNum() {
 
-    }
 
     public boolean isCtrl() {
 
