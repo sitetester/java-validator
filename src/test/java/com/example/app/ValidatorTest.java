@@ -196,4 +196,19 @@ public class ValidatorTest {
                 new Validator().isInIntRange(-2, 1, 10)
         );
     }
+
+    @Test
+    public void isAlpha() {
+        assertTrue(
+                new Validator().isAlpha("abc")
+        );
+
+        assertFalse(
+                new Validator().isAlpha("abc123")
+        );
+
+        assertFalse(
+                new Validator().isAlpha("123")
+        );
+    }
 }

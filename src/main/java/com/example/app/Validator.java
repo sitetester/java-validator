@@ -56,19 +56,16 @@ public class Validator {
         return someNumber >= min && someNumber <= max;
     }
 
-    /*
-    public boolean isInIntRange() {
-
+    public boolean isAlpha(String str) {
+        return str.matches("[a-zA-Z]+");
     }
 
+    /*
     public boolean isUnicode(String str) {
 
     }
+
     public boolean isInCharRange() {
-
-    }
-
-    public boolean isAlpha() {
 
     }
 
