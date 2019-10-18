@@ -321,4 +321,16 @@ public class ValidatorTest {
         assertTrue(new Validator().isDivisibleBy(25, 5));
         assertFalse(new Validator().isDivisibleBy(19, 5));
     }
+
+    @Test
+    public void is12HourTime() {
+        assertTrue(new Validator().is12HourTime("00:00 am"));
+        assertTrue(new Validator().is12HourTime("10:00 am"));
+
+        assertTrue(new Validator().is12HourTime("10:59 am"));
+        assertFalse(new Validator().is12HourTime("10:79 am"));
+
+        assertFalse(new Validator().is12HourTime("10:69 am"));
+        assertFalse(new Validator().is12HourTime("10:510 am"));
+    }
 }

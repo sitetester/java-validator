@@ -97,21 +97,68 @@ class Validator {
         String regex = "^(http(s)?:\\/\\/)?www.";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(url);
-        if (matcher.find()) {
-            return true;
-        }
-
-        return false;
+        return matcher.find();
     }
 
     boolean isSpace(String string) {
         return string.trim().equals("");
     }
 
-    public boolean isDivisibleBy(int target, int num) {
+    boolean isDivisibleBy(int target, int num) {
         return target % num == 0;
     }
 
+    boolean is12HourTime(String time) {
+        String[] hourAndMin = time.split(":");
+        if (hourAndMin.length != 2) {
+            return false;
+        }
+
+        if (!hourAndMin[1].contains("am")) {
+            return false;
+        }
+
+        // hour
+        if (hourAndMin[0].substring(0, 1).equals("0")) {
+            String hour = hourAndMin[0].substring(0, 2);
+            if (!hour.matches("0[0-9]")) {
+                return false;
+            }
+        }
+
+        if (Integer.parseInt(hourAndMin[0].substring(0, 1)) == 1) {
+            String hour = hourAndMin[0].substring(1, 2);
+            if (!hour.matches("[0-2]")) {
+                return false;
+            }
+        }
+
+
+        // minutes
+        String[] minParts = hourAndMin[1].split("\\s");
+        if (minParts[0].length() != 2) {
+            return false;
+        }
+
+        if (Integer.parseInt(hourAndMin[1].substring(0, 1)) > 6) {
+            return false;
+        }
+
+        if (Integer.parseInt(hourAndMin[1].substring(0, 1)) == 6 && Integer.parseInt(hourAndMin[1].substring(0, 1)) != 0) {
+            return false;
+        }
+
+        if (hourAndMin[1].substring(0, 1).equals("0")) {
+            String min2ndPart = hourAndMin[1].substring(1, 2);
+            if (!min2ndPart.matches("[0-9]")) {
+                return false;
+            }
+
+            return true;
+        }
+
+        return true;
+    }
 
     /*
     public boolean isUnicode(String str) {
@@ -198,9 +245,6 @@ class Validator {
 
     }
 
-    public boolean isTime() {
-
-    }
 
     public boolean isDateTime() {
 
