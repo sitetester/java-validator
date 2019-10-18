@@ -64,13 +64,11 @@ class Validator {
     }
 
     boolean isAlphaNum(String str) {
-        Pattern strP = Pattern.compile("[a-zA-Z]");
-        Matcher strM = strP.matcher(str);
-        boolean strFound = strM.find();
+        Pattern pattern = Pattern.compile("[a-zA-Z]");
+        boolean strFound = pattern.matcher(str).find();
 
         Pattern intP = Pattern.compile("[0-9]");
-        Matcher intM = intP.matcher(str);
-        boolean intFound = intM.find();
+        boolean intFound = intP.matcher(str).find();
 
         return strFound && intFound;
     }
