@@ -316,4 +316,9 @@ public class ValidatorTest {
         assertTrue(new Validator().isSpace("\t"));
     }
 
+    @Test
+    public void isDivisibleBy() {
+        assertTrue(new Validator().isDivisibleBy(25, 5));
+        assertFalse(new Validator().isDivisibleBy(19, 5));
+    }
 }

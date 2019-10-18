@@ -104,9 +104,14 @@ class Validator {
         return false;
     }
 
-    public boolean isSpace(String string) {
+    boolean isSpace(String string) {
         return string.trim().equals("");
     }
+
+    public boolean isDivisibleBy(int target, int num) {
+        return target % num == 0;
+    }
+
 
     /*
     public boolean isUnicode(String str) {
@@ -185,10 +190,6 @@ class Validator {
 
     }
 
-    public boolean divisibleBy() {
-
-    }
-
     public boolean isPositiveInt() {
 
     }
@@ -216,10 +217,6 @@ class Validator {
 
     // a string (or object with a __toString() method) path to an existing file;
     public boolean isFile() {
-
-    }
-
-    public boolean isOneOfValues() {
 
     }
 
