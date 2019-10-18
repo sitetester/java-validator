@@ -291,4 +291,13 @@ public class ValidatorTest {
 
         new Validator().isObject("abc");
     }
+
+    @Test
+    public void objectPropertyExists() throws NoSuchFieldException {
+
+        Temp temp = new Temp();
+        assertTrue(new Validator().objectPropertyExists(temp, "someField"));
+        assertFalse(new Validator().objectPropertyExists(temp, "someField123"));
+    }
+
 }

@@ -263,8 +263,13 @@ class Validator {
         return true;
     }
 
-    public boolean objectPropertyExists(Object someObject, String property) {
-        // ...
+    boolean objectPropertyExists(Object obj, String property) throws NoSuchFieldException {
+        try {
+            obj.getClass().getDeclaredField(property);
+        } catch (NoSuchFieldException noSuchFieldException) {
+            return false;
+        }
+
         return true;
     }
 
