@@ -2,10 +2,22 @@ package com.example.app;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class ValidatorTest {
+
+    @Test
+    public void listHasValue() {
+        ArrayList list = new ArrayList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+
+        assertTrue(new Validator().arrayListHasValue(list, "C"));
+    }
 
     @Test
     public void isBoolean() {
@@ -276,5 +288,7 @@ public class ValidatorTest {
         assertTrue(
                 new Validator().strictlyEqualTo(s1, s2)
         );
+
+        new Validator().isObject("abc");
     }
 }

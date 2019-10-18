@@ -1,8 +1,13 @@
 package com.example.app;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// https://www.chaijs.com/api/assert/
+// https://phpunit.de/manual/6.5/en/appendixes.assertions.html
+// https://symfony.com/doc/current/reference/constraints.html
+// https://www.npmjs.com/package/validator
 class Validator {
 
     boolean isBoolean(String str) {
@@ -74,7 +79,6 @@ class Validator {
         return str.matches("\\d+");
     }
 
-
     boolean hasLength(String str, int length) {
         return str.length() == length;
     }
@@ -98,13 +102,9 @@ class Validator {
 
     }
 
-
-
     public boolean isCtrl() {
 
     }
-
-
 
     // ctype_graph ?
     public boolean isGraph() {
@@ -136,7 +136,7 @@ class Validator {
 
     }
 
-    public boolean regexMatch() {
+    public boolean regexMatch(String inputString, String regex) {
 
     }
 
@@ -166,8 +166,7 @@ class Validator {
 
     }
 
-
-  public boolean isAscii() {
+    public boolean isAscii() {
 
     }
 
@@ -246,4 +245,31 @@ class Validator {
     // isMACAddress
     // isMimeType
     // isMultibyte(str)
+
+
+    public boolean isInstanceOf(Object object, Object instanceClass) {
+        // ...
+        return true;
+    }
+
+    boolean isObject(Object someObject) {
+        System.out.println(someObject.getClass().getName() instanceof String);
+        // ...
+        return true;
+    }
+
+    public boolean isJSON(String json) {
+        // ...
+        return true;
+    }
+
+    public boolean objectPropertyExists(Object someObject, String property) {
+        // ...
+        return true;
+    }
+
+    boolean arrayListHasValue(ArrayList list, String value) {
+
+        return list.contains(value);
+    }
 }
