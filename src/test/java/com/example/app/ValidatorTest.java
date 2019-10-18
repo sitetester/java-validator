@@ -1,5 +1,6 @@
 package com.example.app;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,6 +9,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class ValidatorTest {
+    private Validator validator;
+
+    @Before
+    public void setUp() {
+        this.validator = new Validator();
+    }
 
     @Test
     public void listHasValue() {
@@ -16,268 +23,268 @@ public class ValidatorTest {
         list.add("B");
         list.add("C");
 
-        assertTrue(new Validator().arrayListHasValue(list, "C"));
+        assertTrue(this.validator.arrayListHasValue(list, "C"));
     }
 
     @Test
     public void isBoolean() {
         assertTrue(
-                new Validator().isBoolean("true")
+                this.validator.isBoolean("true")
         );
 
         assertFalse(
-                new Validator().isBoolean("false")
+                this.validator.isBoolean("false")
         );
 
         assertFalse(
-                new Validator().isBoolean("123")
+                this.validator.isBoolean("123")
         );
 
         assertFalse(
-                new Validator().isBoolean("0")
+                this.validator.isBoolean("0")
         );
     }
 
     @Test
     public void isBooleanTrue() {
         assertTrue(
-                new Validator().isBooleanTrue("true")
+                this.validator.isBooleanTrue("true")
         );
 
         assertFalse(
-                new Validator().isBooleanTrue("1")
+                this.validator.isBooleanTrue("1")
         );
 
         assertFalse(
-                new Validator().isBooleanTrue("0")
+                this.validator.isBooleanTrue("0")
         );
 
         assertTrue(
-                new Validator().isBooleanTrue(String.valueOf(true))
+                this.validator.isBooleanTrue(String.valueOf(true))
         );
     }
 
     @Test
     public void isBooleanFalse() {
         assertTrue(
-                new Validator().isBooleanFalse("false")
+                this.validator.isBooleanFalse("false")
         );
 
         assertTrue(
-                new Validator().isBooleanFalse("0")
+                this.validator.isBooleanFalse("0")
         );
 
         assertTrue(
-                new Validator().isBooleanFalse(String.valueOf(false))
+                this.validator.isBooleanFalse(String.valueOf(false))
         );
     }
 
     @Test
     public void isInt() {
         assertTrue(
-                new Validator().isInt("123")
+                this.validator.isInt("123")
         );
 
         assertFalse(
-                new Validator().isInt("a")
+                this.validator.isInt("a")
         );
 
         assertFalse(
-                new Validator().isInt("#@1")
+                this.validator.isInt("#@1")
         );
     }
 
     @Test
     public void isEmpty() {
         assertTrue(
-                new Validator().isEmpty("")
+                this.validator.isEmpty("")
         );
 
         assertTrue(
-                new Validator().isEmpty(" ")
+                this.validator.isEmpty(" ")
         );
 
         assertTrue(
-                new Validator().isEmpty("  ")
+                this.validator.isEmpty("  ")
         );
 
         assertTrue(
-                new Validator().isEmpty("\t")
+                this.validator.isEmpty("\t")
         );
 
         assertTrue(
-                new Validator().isEmpty("\t\t\t")
+                this.validator.isEmpty("\t\t\t")
         );
     }
 
     @Test
     public void isLowercase() {
         assertTrue(
-                new Validator().isLowercase("a")
+                this.validator.isLowercase("a")
         );
 
         assertFalse(
-                new Validator().isLowercase("A")
+                this.validator.isLowercase("A")
         );
     }
 
     @Test
     public void isUppercase() {
         assertTrue(
-                new Validator().isUppercase("A")
+                this.validator.isUppercase("A")
         );
 
         assertFalse(
-                new Validator().isUppercase("a")
+                this.validator.isUppercase("a")
         );
     }
 
     @Test
     public void hasSpecialChar() {
         assertTrue(
-                new Validator().hasSpecialChar("123%#@ABC)")
+                this.validator.hasSpecialChar("123%#@ABC)")
         );
 
         assertFalse(
-                new Validator().hasSpecialChar("123")
+                this.validator.hasSpecialChar("123")
         );
 
         assertFalse(
-                new Validator().hasSpecialChar("abc")
+                this.validator.hasSpecialChar("abc")
         );
     }
 
     @Test
     public void isEmail() {
         assertTrue(
-                new Validator().isEmail("test@yahoo.com")
+                this.validator.isEmail("test@yahoo.com")
         );
 
         assertTrue(
-                new Validator().isEmail("first.last@yahoo.com")
+                this.validator.isEmail("first.last@yahoo.com")
         );
 
         assertTrue(
-                new Validator().isEmail("first_last@yahoo.com")
+                this.validator.isEmail("first_last@yahoo.com")
         );
 
         assertTrue(
-                new Validator().isEmail("abc1980@yahoo.com")
+                this.validator.isEmail("abc1980@yahoo.com")
         );
 
         // starts with number
         assertFalse(
-                new Validator().isEmail("123test@yahoocom")
+                this.validator.isEmail("123test@yahoocom")
         );
 
         // missing `@`
         assertFalse(
-                new Validator().isEmail("testyahoo.com")
+                this.validator.isEmail("testyahoo.com")
         );
 
         // missing `.`
         assertFalse(
-                new Validator().isEmail("test@yahoocom")
+                this.validator.isEmail("test@yahoocom")
         );
 
         //  ends with `.comorg`
         assertFalse(
-                new Validator().isEmail("test@yahoo.comorg")
+                this.validator.isEmail("test@yahoo.comorg")
         );
 
         //  ends with `.com.org`
         assertFalse(
-                new Validator().isEmail("test@yahoo.com.org")
+                this.validator.isEmail("test@yahoo.com.org")
         );
 
         assertFalse(
-                new Validator().isEmail("first=last@yahoo.com")
+                this.validator.isEmail("first=last@yahoo.com")
         );
     }
 
     @Test
     public void isInIntRange() {
         assertTrue(
-                new Validator().isInIntRange(5, 1, 10)
+                this.validator.isInIntRange(5, 1, 10)
         );
 
         assertFalse(
-                new Validator().isInIntRange(500, 1, 10)
+                this.validator.isInIntRange(500, 1, 10)
         );
 
         assertFalse(
-                new Validator().isInIntRange(-2, 1, 10)
+                this.validator.isInIntRange(-2, 1, 10)
         );
     }
 
     @Test
     public void isAlpha() {
         assertTrue(
-                new Validator().isAlpha("abc")
+                this.validator.isAlpha("abc")
         );
 
         assertFalse(
-                new Validator().isAlpha("abc123")
+                this.validator.isAlpha("abc123")
         );
 
         assertFalse(
-                new Validator().isAlpha("123")
+                this.validator.isAlpha("123")
         );
     }
 
     @Test
     public void isAlphaNum() {
         assertFalse(
-                new Validator().isAlphaNum("abc")
+                this.validator.isAlphaNum("abc")
         );
 
         assertTrue(
-                new Validator().isAlphaNum("abc123")
+                this.validator.isAlphaNum("abc123")
         );
 
         assertFalse(
-                new Validator().isAlphaNum("123")
+                this.validator.isAlphaNum("123")
         );
     }
 
     @Test
     public void isDigit() {
         assertFalse(
-                new Validator().isDigit("abc")
+                this.validator.isDigit("abc")
         );
 
         assertTrue(
-                new Validator().isDigit("123")
+                this.validator.isDigit("123")
         );
 
         assertFalse(
-                new Validator().isDigit("123_456")
+                this.validator.isDigit("123_456")
         );
 
         assertFalse(
-                new Validator().isDigit(".")
+                this.validator.isDigit(".")
         );
 
         assertTrue(
-                new Validator().isDigit("0")
+                this.validator.isDigit("0")
         );
     }
 
     @Test
     public void hasLength() {
         assertTrue(
-                new Validator().hasLength("abc", 3)
+                this.validator.hasLength("abc", 3)
         );
 
         assertFalse(
-                new Validator().hasLength("abc", 2)
+                this.validator.hasLength("abc", 2)
         );
     }
 
     @Test
     public void equalTo() {
         assertTrue(
-                new Validator().equalTo("abc", "abc")
+                this.validator.equalTo("abc", "abc")
         );
     }
 
@@ -286,62 +293,62 @@ public class ValidatorTest {
         String s1 = "abc";
         String s2 = s1;
         assertTrue(
-                new Validator().strictlyEqualTo(s1, s2)
+                this.validator.strictlyEqualTo(s1, s2)
         );
 
-        new Validator().isObject("abc");
+        this.validator.isObject("abc");
     }
 
     @Test
     public void objectPropertyExists() throws NoSuchFieldException {
         Temp temp = new Temp();
-        assertTrue(new Validator().objectPropertyExists(temp, "someField"));
-        assertFalse(new Validator().objectPropertyExists(temp, "someField123"));
+        assertTrue(this.validator.objectPropertyExists(temp, "someField"));
+        assertFalse(this.validator.objectPropertyExists(temp, "someField123"));
     }
 
     @Test
     public void isUrl() {
-        assertTrue(new Validator().isUrl("www.example.com"));
-        assertTrue(new Validator().isUrl("http://www.example.com"));
-        assertTrue(new Validator().isUrl("https://www.example.com"));
-        assertFalse(new Validator().isUrl("htt://www.example.com")); // missing `p` in http
-        assertFalse(new Validator().isUrl("bogus.com")); // missing http or www
+        assertTrue(this.validator.isUrl("www.example.com"));
+        assertTrue(this.validator.isUrl("http://www.example.com"));
+        assertTrue(this.validator.isUrl("https://www.example.com"));
+        assertFalse(this.validator.isUrl("htt://www.example.com")); // missing `p` in http
+        assertFalse(this.validator.isUrl("bogus.com")); // missing http or www
     }
 
     @Test
     public void isSpace() {
-        assertTrue(new Validator().isSpace(" "));
-        assertTrue(new Validator().isSpace("           "));
-        assertTrue(new Validator().isSpace("\t"));
+        assertTrue(this.validator.isSpace(" "));
+        assertTrue(this.validator.isSpace("           "));
+        assertTrue(this.validator.isSpace("\t"));
     }
 
     @Test
     public void isDivisibleBy() {
-        assertTrue(new Validator().isDivisibleBy(25, 5));
-        assertFalse(new Validator().isDivisibleBy(19, 5));
+        assertTrue(this.validator.isDivisibleBy(25, 5));
+        assertFalse(this.validator.isDivisibleBy(19, 5));
     }
 
     @Test
     public void is12HourTime() {
-        assertTrue(new Validator().is12HourTime("00:00 am"));
-        assertTrue(new Validator().is12HourTime("10:00 am"));
+        assertTrue(this.validator.is12HourTime("00:00 am"));
+        assertTrue(this.validator.is12HourTime("10:00 am"));
 
-        assertTrue(new Validator().is12HourTime("10:59 am"));
-        assertFalse(new Validator().is12HourTime("10:79 am"));
+        assertTrue(this.validator.is12HourTime("10:59 am"));
+        assertFalse(this.validator.is12HourTime("10:79 am"));
 
-        assertFalse(new Validator().is12HourTime("10:69 am"));
-        assertFalse(new Validator().is12HourTime("10:510 am"));
+        assertFalse(this.validator.is12HourTime("10:69 am"));
+        assertFalse(this.validator.is12HourTime("10:510 am"));
     }
 
     @Test
     public void isValidDate() {
-        assertTrue(new Validator().isValidDate(1990, 10, 20));
-        assertFalse(new Validator().isValidDate(1990, 10, 40));
+        assertTrue(this.validator.isValidDate(1990, 10, 20));
+        assertFalse(this.validator.isValidDate(1990, 10, 40));
     }
 
     @Test
     public void fileExists() {
-        assertTrue(new Validator().fileExists("src/test/resources/dummy.txt"));
-        assertFalse(new Validator().fileExists("src/test/resources/dummy123.txt"));
+        assertTrue(this.validator.fileExists("src/test/resources/dummy.txt"));
+        assertFalse(this.validator.fileExists("src/test/resources/dummy123.txt"));
     }
 }
