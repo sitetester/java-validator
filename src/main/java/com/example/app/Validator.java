@@ -104,6 +104,10 @@ class Validator {
         return false;
     }
 
+    public boolean isSpace(String string) {
+        return string.trim().equals("");
+    }
+
     /*
     public boolean isUnicode(String str) {
 
@@ -127,10 +131,6 @@ class Validator {
     }
 
     public boolean isPunct() {
-
-    }
-
-    public boolean isSpace() {
 
     }
 

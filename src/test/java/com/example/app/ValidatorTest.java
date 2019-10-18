@@ -309,4 +309,11 @@ public class ValidatorTest {
         assertFalse(new Validator().isUrl("bogus.com")); // missing http or www
     }
 
+    @Test
+    public void isSpace() {
+        assertTrue(new Validator().isSpace(" "));
+        assertTrue(new Validator().isSpace("           "));
+        assertTrue(new Validator().isSpace("\t"));
+    }
+
 }
