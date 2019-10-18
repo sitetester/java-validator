@@ -300,4 +300,13 @@ public class ValidatorTest {
         assertFalse(new Validator().objectPropertyExists(temp, "someField123"));
     }
 
+    @Test
+    public void isUrl() {
+        assertTrue(new Validator().isUrl("www.example.com"));
+        assertTrue(new Validator().isUrl("http://www.example.com"));
+        assertTrue(new Validator().isUrl("https://www.example.com"));
+        assertFalse(new Validator().isUrl("htt://www.example.com")); // missing `p` in http
+        assertFalse(new Validator().isUrl("bogus.com")); // missing http or www
+    }
+
 }

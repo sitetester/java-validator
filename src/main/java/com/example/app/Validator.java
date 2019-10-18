@@ -93,6 +93,17 @@ class Validator {
         return str1 == str2;
     }
 
+    boolean isUrl(String url) {
+        String regex = "^(http(s)?:\\/\\/)?www.";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(url);
+        if (matcher.find()) {
+            return true;
+        }
+
+        return false;
+    }
+
     /*
     public boolean isUnicode(String str) {
 
@@ -129,10 +140,6 @@ class Validator {
     }
 
     public boolean hasLength() {
-
-    }
-
-    public boolean isUrl() {
 
     }
 
