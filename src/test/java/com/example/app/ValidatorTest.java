@@ -333,4 +333,10 @@ public class ValidatorTest {
         assertFalse(new Validator().is12HourTime("10:69 am"));
         assertFalse(new Validator().is12HourTime("10:510 am"));
     }
+
+    @Test
+    public void isValidDate() {
+        assertTrue(new Validator().isValidDate(1990, 10, 20));
+        assertFalse(new Validator().isValidDate(1990, 10, 40));
+    }
 }

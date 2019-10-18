@@ -1,5 +1,7 @@
 package com.example.app;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -322,5 +324,15 @@ class Validator {
     boolean arrayListHasValue(ArrayList list, String value) {
 
         return list.contains(value);
+    }
+
+    boolean isValidDate(int year, int month, int day) {
+        try {
+            LocalDate.of(year, month, day);
+        } catch (DateTimeException dateTimeException) {
+            return false;
+        }
+
+        return true;
     }
 }
