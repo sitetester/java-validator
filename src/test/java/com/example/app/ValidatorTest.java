@@ -294,7 +294,6 @@ public class ValidatorTest {
 
     @Test
     public void objectPropertyExists() throws NoSuchFieldException {
-
         Temp temp = new Temp();
         assertTrue(new Validator().objectPropertyExists(temp, "someField"));
         assertFalse(new Validator().objectPropertyExists(temp, "someField123"));
@@ -338,5 +337,11 @@ public class ValidatorTest {
     public void isValidDate() {
         assertTrue(new Validator().isValidDate(1990, 10, 20));
         assertFalse(new Validator().isValidDate(1990, 10, 40));
+    }
+
+    @Test
+    public void fileExists() {
+        assertTrue(new Validator().fileExists("src/test/resources/dummy.txt"));
+        assertFalse(new Validator().fileExists("src/test/resources/dummy123.txt"));
     }
 }

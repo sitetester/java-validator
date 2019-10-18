@@ -1,5 +1,6 @@
 package com.example.app;
 
+import java.io.File;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -334,5 +335,11 @@ class Validator {
         }
 
         return true;
+    }
+
+    boolean fileExists(String absolutePath) {
+        var file = new File(absolutePath);
+
+        return file.exists() && file.isFile();
     }
 }
